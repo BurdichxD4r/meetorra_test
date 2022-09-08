@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Убираю отступы */
+body {
+    padding: 0;
+    margin: 0;
+}
+
+/* Меню в центре экрана */
+.horizontal__menu {
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* убираем отступы и поля, а также list-style для "ul", и добавляем "position:relative" */
+nav ul {
+    padding:0;
+    margin:0;
+    list-style: none;
+    position: relative;
+    }
+
+/* применяем inline-block позиционирование к элементам навигации */
+nav ul li {
+    margin: 0px -7px 0 0;
+    display:inline-block;
+    background-color: #86f508;
+    }
+
+/* стилизуем ссылки */
+nav a {
+    display:block;
+    padding:0 10px;
+    color:rgb(0, 0, 0);
+    font-size:20px;
+    line-height: 60px;
+    text-decoration:none;
+}
+
+/* изменяем цвет фона при наведении курсора */
+nav a:hover {
+    background-color: #d1b5b5;
+}
+
+/* скрываем выпадающие списки по умолчанию (прозрачность 0%), задаем абсолютное позиционирование и ставим задержку на появление */
+nav ul ul {
+	position: absolute;
+    top: 100%;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+    transition-property: opacity, visibility;
+    transition-duration: .6s, 0s;
+    transition-delay: 0s, .6s;
+}
+			
+/* отображаем выпадающий список при наведении */
+nav ul li:hover > ul {
+	display: block;
+    cursor: pointer;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    transition-delay: 0s, 0s;
+}
+			
+/* первый уровень выпадающего списка */
+nav ul ul li {
+	min-width:170px;
+	float:none;
+	display:list-item;
+	position: relative;
+}
+
+/* второй, третий и последующие уровни смещаем 2 и 3 уровни влево на значение длины первого уровня.*/
+nav ul ul ul {
+	position: absolute;
+	top:0;
+	left:100%;
+}
+
+/* Делаем обозначение выпадающего списка */
+li > a:after {
+    content:  ' \21CA';
+}
+
+li > a:only-child:after {
+    content: '';
+}
